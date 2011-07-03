@@ -6,30 +6,30 @@
 ?>
 /********************** begin custom header **********************/
 /* Site name */
-#elgg_header_contents h1 {
+.elgg-page-header h1 {
 	float: left;
-	display: block;
 }
 /* Site menu */
-#custom_menu {
-	float: left;
-	position: relative;
+#custom-menu {
+	float: right;
 	margin: 25px 0 0 50px;
 }
-#custom_menu li {
-	float: left;
-	margin-right: 10px;
+#custom-menu li {
+	display: inline-block;
+	margin-left: 10px;
 }
-#custom_menu li a {
+#custom-menu li a {
 	display: block;
-	color: #eeeeee;
-	padding: 4px 10px;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
 	font-size: 1.1em;
 	font-weight: bold;
+	color: #eeeeee;
+	padding: 4px 10px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	text-decoration: none;
 }
-#custom_menu li a:hover {
+#custom-menu li a:hover {
 	color: #ffffff;
 	background-color: #0054A7;
 	text-decoration: none;

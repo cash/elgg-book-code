@@ -8,18 +8,14 @@
  * @license http://opensource.org/licenses/gpl-2.0.php GPL 2
  */
 
-register_elgg_event_handler('init', 'system', 'sidebar_tip_init');
+elgg_register_event_handler('init', 'system', 'sidebar_tip_init');
 
 /**
  * Initialize the plugin
  */
 function sidebar_tip_init() {
-	// only show tops to logged in users
-	if (isloggedin()) {
-		elgg_extend_view('elgg_sidebar/extend', 'sidebar_tip/tip');
-	} else {
-		elgg_extend_view('elgg_sidebar/extend', 'sidebar_tip/join');
-	}
+	// Our sidebar_tip/tip view is added to the page/elements/sidebar view
+	elgg_extend_view('page/elements/sidebar', 'sidebar_tip/tip');
 }
 
 /**
@@ -29,5 +25,5 @@ function sidebar_tip_get_tip() {
 	$num_tips = 4;
 
 	$select = rand(1, $num_tips);
-	return elgg_echo("tip$select");
+	return elgg_echo("sidebar_tip:tip$select");
 }

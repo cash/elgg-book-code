@@ -3,27 +3,24 @@
  * Countdown view
  */
 
-$release_date = get_plugin_setting('release_date', 'coming_soon');
+$release_date = elgg_get_plugin_setting('release_date', 'coming_soon');
 if (!$release_date) {
-	return '';
+	// nothing to display so we return
+	return true;
 }
 
-// date is stored as mm/dd/yy
-$date_parts = explode('/', $release_date);
-$release_time = mktime(0, 0, 0, $date_parts[0], $date_parts[1], $date_parts[2]);
-
 // number of seconds until release
-$diff = $release_time - time();
+$diff = $release_date - time();
 
 // round up to number of days
 $day = 24 * 60 * 60;
 $num_days = ceil($diff/$day);
+
+$countdown = elgg_echo('coming_soon:coming', array($num_days));
 ?>
 
-<div id="coming_countdown">
+<div id="coming-countdown">
 	<span>
-<?php
-echo sprintf(elgg_echo('coming_soon:coming'), $num_days);
-?>
+		<?php echo $countdown; ?>
 	</span>
 </div>

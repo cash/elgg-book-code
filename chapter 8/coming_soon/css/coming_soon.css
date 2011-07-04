@@ -1,0 +1,68 @@
+/* ***************************************
+	RESET CSS
+*************************************** */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/* ***************************************
+	COMING SOON
+*************************************** */
+body {
+	background-color: #808080;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	color: white;
+	text-shadow: black 0.05em 0.05em 0.15em;
+	font-size: 6em;
+	line-height: 2em;
+}
+
+h3 {
+	color: #e1e3e1;
+	text-shadow: 0px 1px 5px black;
+	font-size: 1.5em;
+}
+
+#coming-wrapper {
+	width: 640px;
+	margin: 30px auto;
+	text-align: center;
+}
+
+#coming-countdown {
+	margin: 80px 0;
+}
+
+#coming-countdown span {
+	color: white;
+	background-color: #12443F;
+	border: 1px solid black;
+	padding: 30px;
+	font-size: 1.5em;
+	font-weight: bolder;
+	text-shadow: 0px 1px 10px black;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	box-shadow: 2px 2px 8px black;
+	-moz-box-shadow: 2px 2px 8px black;
+	-webkit-box-shadow: 2px 2px 8px black;
+}

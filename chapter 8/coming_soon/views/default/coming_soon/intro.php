@@ -3,13 +3,10 @@
  * Top view
  */
 
-$sitename = $CONFIG->sitename;
+$site = elgg_get_site_entity();
 
-$site = get_entity($CONFIG->site_guid);
+$title = $site->name;
 $tagline = $site->description;
-?>
-<div id="coming_intro">
-	<h1><?php echo $sitename ?></h1>
 
-	<h2><?php echo $tagline;  ?></h2>
-</div>
+echo "<h1>$title</h1>";
+echo "<h3>$tagline</h3>";

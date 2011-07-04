@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Coming soon page
  *
@@ -9,20 +8,14 @@
  * @license http://opensource.org/licenses/gpl-2.0.php GPL 2
  */
 
-register_elgg_event_handler('init', 'system', 'coming_soon_init');
+elgg_register_event_handler('init', 'system', 'coming_soon_init');
 
 function coming_soon_init() {
 	// override the front page - we want first try at the front page
-	register_plugin_hook('index', 'system', 'coming_soon_index', 1);
+	elgg_register_plugin_hook_handler('index', 'system', 'coming_soon_index', 1);
 
 	// register a redirect for every page
-	register_elgg_event_handler('pagesetup', 'system', 'coming_soon_redirect');
-
-	// add a special login page
-	register_page_handler('login', 'coming_soon_login');
-
-	// add our css
-	elgg_extend_view('css', 'coming_soon/css');
+	//elgg_register_event_handler('pagesetup', 'system', 'coming_soon_redirect');
 }
 
 /**
@@ -33,44 +26,39 @@ function coming_soon_init() {
 function coming_soon_index() {
 
 	// logged in users get normal front page
-	if (isloggedin()) {
-		return;
-	}
+	//if (elgg_is_logged_in()) {
+	//	return;
+	//}
 
-	// for non-logged in users
-	require dirname(__FILE__) . "/index.php";
+	$body = elgg_view_layout('coming_soon');
 
-	// exit so no other plugins can add html
-	exit;
-}
+	// use our own page shell
+	echo elgg_view_page('', $body, 'coming_soon');
 
-/**
- * Login page for admins
- *
- * @returns boolean
- */
-function coming_soon_login() {
-	require dirname(__FILE__) . "/login.php";
-	return TRUE;
+	return true;
 }
 
 /**
  * Catch people trying to view other pages and send them to front page
  */
 function coming_soon_redirect() {
-	global $CONFIG;
 
-	// we let through login page, front page, css and
+	$root = elgg_get_site_url();
+
+	// we let through login page, our front page, any css/js page, and
 	// any page for a logged in user
 
-	$login_url = $CONFIG->wwwroot . 'pg/login/';
+	$login_url = $root . 'login';
 	if (current_page_url() == $login_url) {
 		return;
 	}
-	if (current_page_url() == $CONFIG->wwwroot) {
+	if (current_page_url() == $root) {
 		return;
 	}
 	if (strpos(current_page_url(), 'css')) {
+		return;
+	}
+	if (strpos(current_page_url(), 'js')) {
 		return;
 	}
 

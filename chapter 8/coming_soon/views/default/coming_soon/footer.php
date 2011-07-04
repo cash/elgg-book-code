@@ -4,8 +4,4 @@
  */
 ?>
 
-<div id="coming_footer">
-<?php
-echo elgg_echo('coming_soon:footer');
-?>
-</div>
+<h3><?php echo elgg_echo('coming_soon:footer'); ?></h3>

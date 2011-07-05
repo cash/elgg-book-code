@@ -5,34 +5,37 @@
  */
 
 $item = $vars['entity'];
+$question = $item->title;
+$answer = $item->description;
 
 // full view
-if ($vars['full']) {
-?>
-<div class="help_item">
-	<a name="<?php echo $item->guid; ?>"></a>
-	<h2><?php echo $item->title; ?></h2>
-<?php
-	echo elgg_view('output/longtext', array('value' => $item->description));
+if ($vars['full_view']) {
+/*
+	$menu = elgg_view_menu('entity', array(
+		'entity' => $item,
+		'handler' => 'help',
+		'sort_by' => 'priority',
+		'class' => 'elgg-menu-hz',
+	));
+*/
+	$body = elgg_view('output/longtext', array(
+		'value' => $answer,
+		'class' => 'mtn',
+	));
 
-	// admins get a edit and delete link
-	if (isadminloggedin()) {
-	/*
-		$edit_link = "{$vars['url']}pg/help/admin/?guid=$item->guid";
-		echo elgg_view('output/url', array(	'text' => elgg_echo('edit'),
-											'href' => $edit_link));
-		echo ' ';
-		$delete_link = "{$vars['url']}action/help/delete?guid=$item->guid";
-		echo elgg_view('output/confirmlink', array(	'text' => elgg_echo('delete'),
-													'href' => $delete_link));
-	 *
-	 */
-	}
-?>
-
+	echo <<<HTML
+<div class="help-item" id="$item->guid">
+	$menu
+	<h2>$question</h2>
+	$body
 </div>
-<?php
-} else {
-	// do not need any other views of the object at the moment
+HTML;
 
+} else {
+	// summary view is just a link
+	$url = "help/topic/$item->category#$item->guid";
+	echo elgg_view('output/url', array(
+		'href' => $url,
+		'text' => $question,
+	));
 }

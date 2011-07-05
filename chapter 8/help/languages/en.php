@@ -1,8 +1,11 @@
 <?php
+/**
+ * Help language file
+ */
 
 $english = array(
 	// titles
-	'help:admin' => 'Help setup',
+	'help:admin' => 'Help',
 	'help:categories' => 'Help Categories',
 
 	// menu items and instructions

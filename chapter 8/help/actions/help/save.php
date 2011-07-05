@@ -3,8 +3,6 @@
  * Save a help topic
  */
 
-require $CONFIG->pluginspath . "help/help_lib.php";
-
 // get the form values
 $category = get_input('category');
 $question = get_input('question');
@@ -22,5 +20,4 @@ if (!$result) {
 	system_message(elgg_echo('help:status:save'));
 }
 
-// send to help setup so another topic can be created
-forward('pg/help/admin/');
+forward(REFERER);

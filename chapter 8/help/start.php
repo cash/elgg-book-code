@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Help system
  *
@@ -9,36 +8,49 @@
  * @license http://opensource.org/licenses/gpl-2.0.php GPL 2
  */
 
-register_elgg_event_handler('init', 'system', 'help_init');
+elgg_register_event_handler('init', 'system', 'help_init');
 
 /**
  * Initialize the plugin
  */
 function help_init() {
-	global $CONFIG;
-	
-	// does not work right now due to external/site pages
-	//elgg_extend_view('footer/links', 'help/footer');
-	elgg_extend_view('css', 'help/css');
+
+	elgg_extend_view('css/elgg', 'help/css');
 
 	// page handler for the help system
-	register_page_handler('help', 'help_page_handler');
+	elgg_register_page_handler('help', 'help_page_handler');
 
 	// add menu item for help
-	add_menu(elgg_echo('help'), $CONFIG->wwwroot . "pg/help/");
+	$item = new ElggMenuItem('help', elgg_echo('help'), 'help');
+	elgg_register_menu_item('site', $item);
+	elgg_register_menu_item('footer', $item);
 
-	// register for pagesetup so we can add sidebar menu
-	register_elgg_event_handler('pagesetup', 'system', 'help_adminmenu');
+	elgg_register_admin_menu_item('configure', 'help');
+	elgg_register_menu_item('page', array(
+		'name' => 'help',
+		'text' => elgg_echo('help:admin'),
+		'href' => 'help/admin',
+		'context' => 'admin',
+		'section' => 'configure',
+		'priority' => 200,
+	));
+
+
 
 	// register the save and delete actions for admins only
-	register_action("help/save", FALSE, $CONFIG->pluginspath . "help/actions/save.php", TRUE);
-	register_action("help/delete", FALSE, $CONFIG->pluginspath . "help/actions/delete.php", TRUE);
+	$base = elgg_get_plugins_path() . 'help/actions/help';
+	elgg_register_action("help/save", "$base/save.php", "admin");
+	elgg_register_action("help/delete", "$base/delete.php", "admin");
 
 	// Register for search.
-	register_entity_type('object', 'help');
+	elgg_register_entity_type("object", "help");
+
+	$lib = elgg_get_plugins_path() . 'help/lib/help.php';
+	elgg_register_library('help', $lib);
+	elgg_load_library('help');
 
 	// override default icon to provide special help icon
-	register_plugin_hook('entity:icon:url', 'object', 'help_icon_override');
+	elgg_register_plugin_hook_handler('entity:icon:url', 'object', 'help_icon_override');
 }
 
 /**
@@ -49,43 +61,35 @@ function help_init() {
  */
 function help_page_handler($page) {
 
-	$pages_dir = dirname(__FILE__) . '/pages';
+	$pages_dir = elgg_get_plugins_path() . 'help/pages';
 
-	// main help page: pg/help/
 	if (count($page) == 0) {
-		require "$pages_dir/index.php";
-		return TRUE;
+		$page[0] = 'index';
 	}
 
-	// other pages
 	switch ($page[0]) {
-		// pg/help/admin
+		// help/admin
 		case 'admin':
 			require "$pages_dir/admin.php";
 			break;
-		// pg/help/topic/<category>
-		case 'topic':
-			set_input('category', $page[1]);
-			require "$pages_dir/topic.php";
+		// help/edit/<guid>
+		case 'edit':
+			set_input('guid', (int)$page[1]);
+			require "$pages_dir/admin.php";
 			break;
+		// help/category/<category>
+		case 'category':
+			set_input('category', $page[1]);
+			require "$pages_dir/category.php";
+			break;
+		// index page or unknown requests
+		case 'index':
 		default:
-			// unknown help page so we send to index
 			require "$pages_dir/index.php";
 			break;
 	}
 
-	return TRUE;
-}
-
-/**
- * Add admin sidebar menu item
- */
-function help_adminmenu() {
-	global $CONFIG;
-	
-	if (get_context() == 'admin') {
-		add_submenu_item(elgg_echo('help:admin'), $CONFIG->wwwroot . 'pg/help/admin/');
-	}
+	return true;
 }
 
 /**
@@ -104,27 +108,4 @@ function help_icon_override($hook, $entity_type, $returnvalue, $params) {
 	if ($params['entity']->subtype == 'help'){
 
 	}
-}
-
-/**
- * Get an array of categories.
- *
- * Array is of the form code => title
- *
- * @return array
- */
-function help_get_categories() {
-	$codes = array('getting_started',
-					'blogging',
-					'bookmarks',
-					'thewire',
-					'profile',
-					'settings',
-					);
-	$categories = array();
-	foreach ($codes as $code) {
-		$categories[$code] = elgg_echo("help:title:$code");
-	}
-	
-	return $categories;
 }

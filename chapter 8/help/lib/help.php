@@ -31,8 +31,32 @@ function help_save_topic($question, $answer, $category, $access_id, $guid=0) {
 	
 	$guid = $help->save();
 	if (!$guid) {
-		return FALSE;
+		return false;
 	}
 
-	return TRUE;
+	return true;
+}
+
+/**
+ * Get an array of categories.
+ *
+ * Array is of the form code => title
+ *
+ * @return array
+ */
+function help_get_categories() {
+	$codes = array(
+		'getting_started',
+		'blogging',
+		'bookmarks',
+		'thewire',
+		'profile',
+		'settings',
+	);
+	$categories = array();
+	foreach ($codes as $code) {
+		$categories[$code] = elgg_echo("help:title:$code");
+	}
+
+	return $categories;
 }

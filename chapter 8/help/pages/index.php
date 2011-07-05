@@ -5,8 +5,8 @@
 
 $title = elgg_echo('help:categories');
 
-$content = elgg_view('help/category_list');
+$content = elgg_view('help/categories');
 
-$body = elgg_view_layout('one_column', $content);
+$body = elgg_view_layout('one_column', array('content' => $content));
 
-page_draw($title, $body);
+echo elgg_view_page($title, $body);

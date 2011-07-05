@@ -7,15 +7,15 @@
 admin_gatekeeper();
 
 // context will be help so we need to set to admin
-set_context('admin');
+elgg_set_context('admin');
 
 $title = elgg_echo('help:admin');
 
 $content = elgg_view_title($title);
 
-$content .= elgg_view('help/admin/main');
+$content .= elgg_view_form('help/save');
 
 // use special admin layout
-$body = elgg_view_layout("administration", $content);
+$body = elgg_view_layout('admin', array('content' => $content));
 
-page_draw($title, $body);
+echo elgg_view_page($title, $body, 'admin');

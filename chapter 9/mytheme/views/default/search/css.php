@@ -6,15 +6,12 @@
 ?>
 
 /**********************************
-Search plugin
+ Search plugin
 ***********************************/
 .elgg-sidebar .elgg-search {
 	margin-bottom: 15px;
 }
-.elgg-page-header .elgg-search input[type=text] {
-	width: 230px;
-}
-.elgg-sidebar .elgg-search input[type=submit] {
+.elgg-search input[type=submit] {
 	display: none;
 }
 .elgg-search input[type=text] {
@@ -27,9 +24,14 @@ Search plugin
 	font-size: 12px;
 	font-weight: bold;
 	padding: 2px 4px 2px 26px;
-	background: transparent url(<?php echo elgg_get_site_url(); ?>_graphics/elgg_sprites.png) no-repeat 2px -700px;
+	background: transparent url(<?php echo elgg_get_site_url(); ?>_graphics/elgg_sprites.png) no-repeat 2px -934px;
 }
-
+.elgg-search input[type=text]:focus, .elgg-search input[type=text]:active {
+	background-color: white;
+	background-position: 2px -916px;
+	border: 1px solid #aaa;
+	color: #666;
+}
 .search-list li {
 	padding: 5px 0 0;
 }
@@ -37,7 +39,6 @@ Search plugin
 	margin-top: 20px;
 	color: #666666;
 }
-
 .search-highlight {
 	background-color: #bbdaf7;
 }

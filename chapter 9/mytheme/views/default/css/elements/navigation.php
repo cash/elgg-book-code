@@ -346,6 +346,20 @@ li:hover > .elgg-menu-tools {
 }
 
 /* ***************************************
+	GENERAL MENU
+*************************************** */
+.elgg-menu-general > li,
+.elgg-menu-general > li > a {
+	display: inline-block;
+	color: #999;
+}
+
+.elgg-menu-general > li:after {
+	content: "\007C";
+	padding: 0 4px;
+}
+
+/* ***************************************
 	ENTITY
 *************************************** */
 <?php // height depends on line height/font size ?>

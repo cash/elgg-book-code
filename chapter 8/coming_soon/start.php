@@ -21,7 +21,7 @@ function coming_soon_init() {
 /**
  * Coming soon front page for visitors
  *
- * @return boolean
+ * @return bool
  */
 function coming_soon_index() {
 

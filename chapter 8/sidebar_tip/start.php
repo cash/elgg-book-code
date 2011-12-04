@@ -20,6 +20,8 @@ function sidebar_tip_init() {
 
 /**
  * Get a random tip (tips are in the language file)
+ *
+ * To add a tip, increase $num_tips and then define the tip in the language file.
  */
 function sidebar_tip_get_tip() {
 	$num_tips = 4;

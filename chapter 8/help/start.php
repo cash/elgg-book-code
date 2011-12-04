@@ -36,15 +36,15 @@ function help_init() {
 	));
 
 
-
 	// register the save and delete actions for admins only
 	$base = elgg_get_plugins_path() . 'help/actions/help';
 	elgg_register_action("help/save", "$base/save.php", "admin");
 	elgg_register_action("help/delete", "$base/delete.php", "admin");
 
-	// Register for search.
+	// register the help entries for search.
 	elgg_register_entity_type("object", "help");
 
+	// make sure our library of PHP functions is available
 	$lib = elgg_get_plugins_path() . 'help/lib/help.php';
 	elgg_register_library('help', $lib);
 	elgg_load_library('help');
@@ -56,7 +56,7 @@ function help_init() {
 /**
  * Route request to the correct script
  *
- * @param array $page
+ * @param array $page Array of URL segments for routing
  * @return bool
  */
 function help_page_handler($page) {

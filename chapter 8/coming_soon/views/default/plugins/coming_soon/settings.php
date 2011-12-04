@@ -9,10 +9,12 @@ if (isset($vars['entity']->release_date)) {
 	$release_date = $vars['entity']->release_date;
 }
 
-// add a date picker
+// add a date picker (the div wrapper is standard for Elgg forms)
 $options = array(
 	'name' => 'params[release_date]',
-	 'value' => $release_date,
+	'value' => $release_date,
 	'timestamp' => true,
 );
+echo '<div>';
 echo elgg_view('input/date', $options);
+echo '</div>';

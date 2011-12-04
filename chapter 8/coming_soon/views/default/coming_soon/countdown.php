@@ -19,7 +19,7 @@ $num_days = ceil($diff/$day);
 $countdown = elgg_echo('coming_soon:coming', array($num_days));
 ?>
 
-<div id="coming-countdown">
+<div class="coming-countdown">
 	<span>
 		<?php echo $countdown; ?>
 	</span>

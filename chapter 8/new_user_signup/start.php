@@ -21,6 +21,7 @@ function new_user_init() {
  * @param string   $event The event name
  * @param string   $type  The event type
  * @param ElggUser $user  The user that just registered
+ * @return void
  */
 function new_user_notify($event, $type, $user) {
 

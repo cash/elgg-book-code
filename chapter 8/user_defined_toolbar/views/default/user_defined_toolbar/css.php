@@ -4,21 +4,23 @@
  *
  */
 ?>
+
 /********************** begin user defined toolbar **********************/
 /* Site name */
 .elgg-page-header h1 {
 	float: left;
 }
 /* Toolbar */
-#udt-toolbar {
-	float: right;
-	margin: 25px 0 0 50px;
+.udt-toolbar {
+	position: absolute;
+	top: 25px;
+	right: 0;
 }
-#udt-toolbar li {
+.udt-toolbar li {
 	display: inline-block;
 	margin-left: 10px;
 }
-#udt-toolbar li a {
+.udt-toolbar li a {
 	display: block;
 	font-size: 1.1em;
 	font-weight: bold;
@@ -29,7 +31,7 @@
 	-moz-border-radius: 8px;
 	text-decoration: none;
 }
-#udt-toolbar li a:hover {
+.udt-toolbar li a:hover {
 	color: #ffffff;
 	background-color: #0054A7;
 	text-decoration: none;

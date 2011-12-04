@@ -2,6 +2,8 @@
 /**
  * Widget edit code
  * User selects how many links to display in widget
+ *
+ * @uses $vars['entity'] ElggWidget object
  */
 
 // set default value

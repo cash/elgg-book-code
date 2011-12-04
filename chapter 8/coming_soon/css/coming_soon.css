@@ -41,17 +41,17 @@ h3 {
 	font-size: 1.5em;
 }
 
-#coming-wrapper {
+.coming-wrapper {
 	width: 640px;
 	margin: 30px auto;
 	text-align: center;
 }
 
-#coming-countdown {
+.coming-countdown {
 	margin: 80px 0;
 }
 
-#coming-countdown span {
+.coming-countdown span {
 	color: white;
 	background-color: #12443F;
 	border: 1px solid black;
@@ -59,9 +59,11 @@ h3 {
 	font-size: 1.5em;
 	font-weight: bolder;
 	text-shadow: 0px 1px 10px black;
+
 	border-radius: 8px;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
+	
 	box-shadow: 2px 2px 8px black;
 	-moz-box-shadow: 2px 2px 8px black;
 	-webkit-box-shadow: 2px 2px 8px black;

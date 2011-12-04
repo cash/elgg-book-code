@@ -3,10 +3,10 @@
 	<name>Welcome Widget</name>
 	<author>Cash Costello</author>
 	<version>1.0</version>
-	<description>Demonstrates how to create a widget</description>
+	<description>Lesson 5: Demonstrates how to create a widget</description>
 	<website>http://www.elgg.org/</website>
 	<copyright>Cash Costello 2011</copyright>
-	<license>GNU Public License version 2</license>
+	<license>GNU General Public License version 2</license>
 	<requires>
 		<type>elgg_release</type>
 		<version>1.8</version>

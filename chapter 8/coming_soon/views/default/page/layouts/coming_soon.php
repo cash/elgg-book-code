@@ -4,7 +4,7 @@
  *
  */
 
-echo '<div id="coming-wrapper">';
+echo '<div class="coming-wrapper">';
 
 echo elgg_view('coming_soon/intro');
 echo elgg_view('coming_soon/countdown');

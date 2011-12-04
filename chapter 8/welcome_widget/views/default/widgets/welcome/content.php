@@ -1,6 +1,8 @@
 <?php
 /**
  * Widget display code
+ *
+ * @uses $vars['entity'] ElggWidget object
  */
 
 $num_links = $vars['entity']->num_links;
@@ -26,6 +28,7 @@ for ($index = 0; $index < $num_links; $index++) {
 	$anchor = elgg_view('output/url', array(
 		'href' => $link,
 		'text' => $text,
+		'is_trusted' => true,
 	));
 	echo "<li>$anchor</li>";
 }

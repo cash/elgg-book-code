@@ -3,12 +3,17 @@
 	<name>Responses and Ranting</name>
 	<author>Cash Costello</author>
 	<version>1.0</version>
-	<description>Demonstrates how to override wording in Elgg</description>
+	<description>Lesson 1: Demonstrates how to override wording in Elgg</description>
 	<website>http://www.elgg.org/</website>
 	<copyright>Cash Costello 2011</copyright>
 	<license>GNU General Public License version 2</license>
 	<requires>
 		<type>elgg_release</type>
 		<version>1.8</version>
+	</requires>
+	<requires>
+		<type>priority</type>
+		<priority>after</priority>
+		<plugin>blog</plugin>
 	</requires>
 </plugin_manifest>

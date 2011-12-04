@@ -7,6 +7,7 @@
 elgg.provide('elgg.tooltips');
 
 elgg.tooltips.init = function() {
+	// only apply this to acronym tags
 	$("acronym[title]").tooltip();
 }
 

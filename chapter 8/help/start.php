@@ -61,7 +61,7 @@ function help_init() {
  */
 function help_page_handler($page) {
 
-	$pages_dir = elgg_get_plugins_path() . 'help/pages';
+	$pages_dir = elgg_get_plugins_path() . 'help/pages/help';
 
 	if (count($page) == 0) {
 		$page[0] = 'index';
@@ -84,8 +84,11 @@ function help_page_handler($page) {
 			break;
 		// index page or unknown requests
 		case 'index':
-		default:
 			require "$pages_dir/index.php";
+			break;
+		// unrecognized help page so we don't handle it
+		default:
+			return false;
 			break;
 	}
 

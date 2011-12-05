@@ -21,9 +21,9 @@ if ($topic) {
 }
 
 
-
 $instructions = elgg_echo('help:admin:instruct');
 
+$category_label = elgg_echo('help:label:category');
 $categories = help_get_categories();
 $category_input = elgg_view('input/dropdown', array(
 	'name' => 'category',
@@ -31,16 +31,19 @@ $category_input = elgg_view('input/dropdown', array(
 	'options_values' => $categories,
 ));
 
+$question_label = elgg_echo('help:label:question');
 $question_input = elgg_view('input/text', array(
 	'name' => 'question',
 	'value' => $question,
 ));
 
+$answer_label = elgg_echo('help:label:answer');
 $answer_input = elgg_view('input/longtext', array(
 	'name' => 'answer',
 	'value' => $answer,
 ));
 
+$access_label = elgg_echo('access');
 $access_input = elgg_view('input/access', array(
 	'name' => 'access_id',
 	'value' => $access_id,
@@ -52,22 +55,22 @@ echo <<<HTML
 
 <div>$instructions</div>
 <div>
-	<label>Category</label><br />
+	<label>$category_label</label><br />
 	$category_input
 </div>
 
 <div>
-	<label>Question</label><br />
+	<label>$question_label</label><br />
 	$question_input
 </div>
 
 <div>
-	<label>Answer</label>
+	<label>$answer_label</label>
 	$answer_input
 </div>
 
 <div>
-	<label>Access</label><br />
+	<label>$access_label</label><br />
 	$access_input
 </div>
 

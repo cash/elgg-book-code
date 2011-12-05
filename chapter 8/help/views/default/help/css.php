@@ -2,30 +2,30 @@
 /**
  * CSS for help pages
  *
- * 3 parts:
+ * 2 parts:
  * Help object - display single topic
  * Help categories - grid of categories
- * Help topics - list of topics
  * 
  */
 
 ?>
 /************************* begin help *****************************/
 
-/* Help object */
+/*** Help object ***/
 .help-list, .help-list > li {
 	border: none;
 }
-.help-item {
-	margin-bottom: 30px;
-}
 
-/* Help categories */
-#help-categories li {
+/*** Help categories ***/
+.help-categories li {
 	float: left;
 	margin: 0 30px 30px 0;
 }
-#help-categories li a {
+/* this makes it 3 across - remove to make it two across */
+.help-categories > li:nth-child(3n+3) {
+	margin-right: 0;
+}
+.help-category {
 	float: left;
 	display: block;
 	width: 252px;
@@ -33,18 +33,13 @@
 	border: 1px solid #cccccc;
 	background-color: #eeeeee;
 }
-#help-categories li a:hover {
+.help-category:hover {
 	text-decoration: none;
 	background: none;
 }
-#help-categories li a span {
+.help-category span {
 	display: block;
 	margin-top: 4px;
 	color: #4690D6;
 }
 /**************************** end help ****************************/
-
-
-#help-categories > li:nth-child(even) {
-	margin-right: 0;
-}

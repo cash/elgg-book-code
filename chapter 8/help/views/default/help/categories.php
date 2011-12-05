@@ -6,15 +6,21 @@
 $categories = help_get_categories();
 
 // create unorder list that we mark-up with CSS
-echo "<ul id='help-categories'>";
+echo "<ul class='help-categories'>";
 foreach ($categories as $code => $title) {
 	$blurb = elgg_echo("help:blurb:$code");
-	
-	$url = "/help/category/$code";
-	$url = elgg_normalize_url($url);
+
+	// the output/url takes care of creating the full URL
+	$url = "help/category/$code";
 
 	$text = "<h4>$title</h4><span>$blurb</span>";
+	$link = elgg_view('output/url', array(
+		'href' => $url,
+		'text' => $text,
+		'class' => 'help-category',
+		'is_trusted' => true,
+	));
 
-	echo "<li><a href=\"$url\">$text</a></li>";
+	echo "<li>$link</li>";
 }
 echo "</ul>";

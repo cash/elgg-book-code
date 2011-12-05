@@ -29,6 +29,11 @@ $english = array(
 	'help:blurb:profile' => 'Avatar, profile fields, comment wall',
 	'help:blurb:settings' => 'Display name, email, notifications',
 
+	// form
+	'help:label:category' => 'Category',
+	'help:label:question' => 'Question',
+	'help:label:answer' => 'Answer',
+
 	// status messages
 	'help:status:deletequestion' => 'The help topic was deleted.',
 	'help:error:nodelete' => 'Unable to delete help topic.',
